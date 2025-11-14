@@ -43,19 +43,18 @@ namespace OrchestratR.ServerManager
             services.AddSingleton<IOrchestratorManagerService, OrchestratorManagerService>();
             services.AddHostedService<OrchestratorManagerService>();
 
-            ServerManagerTransportConfigurator transportConfigurator = null;
             services.AddMassTransit(x =>
             {
                 x.AddConsumer<ServerConsumer>();
                 x.AddConsumer<JobStatusConsumer>();
                 x.AddConsumer<HeartBeatConsumer>();
-                
+
                 MessageCorrelation.UseCorrelationId<IJobHearBeatMessage>(o => o.CorrelationId);
                 MessageCorrelation.UseCorrelationId<IServerCreatedMessage>(o => o.CorrelationId);
                 MessageCorrelation.UseCorrelationId<IServerDeletedMessage>(o => o.CorrelationId);
                 MessageCorrelation.UseCorrelationId<IJobStatusMessage>(o => o.CorrelationId);
-                transportConfigurator = new ServerManagerTransportConfigurator(x);
             });
+            var transportConfigurator = new ServerManagerTransportConfigurator(services);
             return new ServerManagerPersistenceConfigurator(services, transportConfigurator);
         }
     }

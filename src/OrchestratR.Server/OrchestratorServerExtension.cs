@@ -3,7 +3,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using MassTransit;
 using MassTransit.Context;
-using MassTransit.ExtensionsDependencyInjectionIntegration;
 using Microsoft.Extensions.DependencyInjection;
 using OrchestratR.Core.Configurators;
 using OrchestratR.Core.Messages;
@@ -34,15 +33,13 @@ namespace OrchestratR.Server
         
         private static IServerTransportConfigurator BaseConfiguration(IServiceCollection services, OrchestratedServerOptions serverOptions)
         {
-            IServiceCollectionBusConfigurator serviceCollectionBusConfigurator = null;
             services.AddSingleton<JobManager>();
             services.AddSingleton(serverOptions);
             services.AddSingleton<IServerPublisher,ServerPublisher>();
             services.AddSingleton<OrchestratrReceiveEndpointObserver>();
-            
+
             services.AddMassTransit(x =>
             {
-                serviceCollectionBusConfigurator = x;
                 x.AddConsumer<JobConsumer>();
                 x.AddConsumer<JobCancellationConsumer>();
                 MessageCorrelation.UseCorrelationId<IStartJobMessage>(o => o.CorrelationId);
@@ -51,8 +48,7 @@ namespace OrchestratR.Server
             services.AddHostedService<OrchestratorService>();
             return new ServerTransportConfigurator(serverOptions.OrchestratorName,
                 serverOptions.MaxWorkersCount,
-                serviceCollectionBusConfigurator,
                 services);
-        } 
+        }
     }
 }

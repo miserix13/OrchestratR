@@ -1,15 +1,14 @@
-using MassTransit.ExtensionsDependencyInjectionIntegration;
 using OrchestratR.Core.Configurators;
 
 namespace OrchestratR.ServerManager.Configurators
 {
     internal class ServerManagerTransportConfigurator : IServerManagerTransportConfigurator
     {
-        public ServerManagerTransportConfigurator(IServiceCollectionBusConfigurator busConfigurator)
+        public ServerManagerTransportConfigurator(Microsoft.Extensions.DependencyInjection.IServiceCollection services)
         {
-            BusConfigurator = busConfigurator;
+            Services = services;
         }
 
-        public IServiceCollectionBusConfigurator BusConfigurator { get; }
+        public Microsoft.Extensions.DependencyInjection.IServiceCollection Services { get; }
     }
 }

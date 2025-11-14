@@ -7,6 +7,7 @@ using OrchestratR.ServerManager.Persistence;
 namespace OrchestratR.ServerManager.Common
 {
     public class TransactionalBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
+        where TRequest : IRequest<TResponse>
     {
         private readonly OrchestratorDbContext _orchestratorDbContext;
 
@@ -15,8 +16,7 @@ namespace OrchestratR.ServerManager.Common
             _orchestratorDbContext = orchestratorDbContext;
         }
 
-        public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken,
-            RequestHandlerDelegate<TResponse> next)
+        public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
         {
             if (request is not ITransactionalCommand)
             {
@@ -24,9 +24,9 @@ namespace OrchestratR.ServerManager.Common
             }
 
             using var transaction = await _orchestratorDbContext.Database.BeginTransactionAsync(cancellationToken);
-            
+
             var response = await next();
-            
+
             await _orchestratorDbContext.SaveChangesAsync(cancellationToken);
             await transaction.CommitAsync(cancellationToken);
 

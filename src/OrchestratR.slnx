@@ -20,4 +20,5 @@
   </Folder>
   <Folder Name="/ServerManager/Paging/" />
   <Project Path="OrchestratR.Core/OrchestratR.Core.csproj" />
+  <Project Path="OrchestratR.Tests/OrchestratR.Tests.csproj" />
 </Solution>
