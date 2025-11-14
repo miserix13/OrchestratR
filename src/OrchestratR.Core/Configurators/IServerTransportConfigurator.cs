@@ -1,4 +1,3 @@
-using MassTransit.ExtensionsDependencyInjectionIntegration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace OrchestratR.Core.Configurators
@@ -7,7 +6,7 @@ namespace OrchestratR.Core.Configurators
     {
         string OrchestratorServerName { get; }
         int MaxWorkersCount { get; }
-        IServiceCollectionBusConfigurator BusConfigurator { get; }
-        IServiceCollection ServiceCollection { get; }
+        IServiceCollection Services { get; }
+        // Add additional configuration properties/methods as needed for MassTransit 8+
     }
 }

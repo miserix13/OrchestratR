@@ -1,9 +1,11 @@
-using MassTransit.ExtensionsDependencyInjectionIntegration;
+
+using Microsoft.Extensions.DependencyInjection;
 
 namespace OrchestratR.Core.Configurators
 {
     public interface IServerManagerTransportConfigurator
     {
-        IServiceCollectionBusConfigurator BusConfigurator { get; }
+        IServiceCollection Services { get; }
+        // Add additional configuration properties/methods as needed for MassTransit 8+
     }
 }
