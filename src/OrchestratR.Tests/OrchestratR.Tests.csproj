@@ -20,6 +20,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\OrchestratR.Core\OrchestratR.Core.csproj" />
+    <ProjectReference Include="..\OrchestratR.Server\OrchestratR.Server.csproj" />
+    <ProjectReference Include="..\OrchestratR.ServerManager\OrchestratR.ServerManager.csproj" />
+    <ProjectReference Include="..\OrchestratR.Extension.RabbitMq\OrchestratR.Extension.RabbitMq.csproj" />
+    <ProjectReference Include="..\OrchestratR.ServerManager.Domain\OrchestratR.ServerManager.Domain.csproj" />
+    <ProjectReference Include="..\OrchestratR.ServerManager.Persistence\OrchestratR.ServerManager.Persistence.csproj" />
   </ItemGroup>
 
 </Project>

@@ -11,7 +11,7 @@ using OrchestratR.ServerManager.Persistence;
 
 namespace OrchestratR.ServerManager
 {
-    internal class OrchestratorManagerService : IHostedService, IOrchestratorManagerService
+    public class OrchestratorManagerService : IHostedService, IOrchestratorManagerService
     {
         private readonly IServiceScopeFactory _serviceScopeFactory;
         private readonly ILogger<OrchestratorManagerService> _logger;
