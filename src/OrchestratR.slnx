@@ -1,0 +1,23 @@
+<Solution>
+  <Folder Name="/Extensions/">
+    <Project Path="OrchestratR.Extension.RabbitMq/OrchestratR.Extension.RabbitMq.csproj" />
+  </Folder>
+  <Folder Name="/Samples/">
+    <Project Path="Samples/Server/Server.csproj" />
+    <Project Path="Samples/ServerManager/ServerManager.csproj" />
+  </Folder>
+  <Folder Name="/Server/">
+    <Project Path="OrchestratR.Server/OrchestratR.Server.csproj" />
+  </Folder>
+  <Folder Name="/ServerManager/">
+    <Project Path="OrchestratR.ServerManager.Domain/OrchestratR.ServerManager.Domain.csproj" />
+    <Project Path="OrchestratR.ServerManager.Persistence.InMemory/OrchestratR.ServerManager.Persistence.InMemory.csproj" />
+    <Project Path="OrchestratR.ServerManager.Persistence.MsSql/OrchestratR.ServerManager.Persistence.MsSql.csproj" />
+    <Project Path="OrchestratR.ServerManager.Persistence.MySql/OrchestratR.ServerManager.Persistence.MySql.csproj" />
+    <Project Path="OrchestratR.ServerManager.Persistence.PostgreSql/OrchestratR.ServerManager.Persistence.PostgreSql.csproj" />
+    <Project Path="OrchestratR.ServerManager.Persistence/OrchestratR.ServerManager.Persistence.csproj" />
+    <Project Path="OrchestratR.ServerManager/OrchestratR.ServerManager.csproj" />
+  </Folder>
+  <Folder Name="/ServerManager/Paging/" />
+  <Project Path="OrchestratR.Core/OrchestratR.Core.csproj" />
+</Solution>
